@@ -1,34 +1,49 @@
 .header{
     margin: auto;
     width: 1200px;
-    height: 600px;
-    background-image: url(/BuildSchool切版/img/header.webp);
+    height: 500px;
+    background-image: url(./img/header.webp);
+    background-color: #ccc;
+    opacity: 95%;
+    background-blend-mode: multiply;
 }
-.top-block{
+/* .nav-block{
     width: 1200px;
-    height: 200px;
     margin: auto;
     flex-wrap: wrap;
     display: flex;
-}
+} */
 .logo{
-    width: 340px;
-    margin: 30px;
+    width: 360px;
+    margin: 20px;
     display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
 }
-.logo-left{
-    width: 110px;
+.logo-img{
+    width: 100px;
+    display: flex;
+    justify-content: flex-end;
 }
-.logo-left img{
-    height: 50%;
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
+.logo-img img{
+    height: 100%;
 }
 .logo-right{
-    width: 300px;
-    margin-top: 12px;
+    width: 220px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 32px;
+    color: white;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    margin-top: 10px;
+    margin-left: 20px;
+}
+.logo-right span{
+    align-self: center;
+}
+.logo-right span:nth-child(2){
+    font-size: 12px;
 }
 .header nav{
     width: 800px;
@@ -42,30 +57,43 @@
 .nav-link{
     text-decoration: none;
     font-size: 14px;
-    color: blue;
+    color: white;
 }
 .nav-link:hover{
     color: slategray;
 }
 .mid-block{
     width: 1200px;
-    height: 200px;
     display: flex;
     margin: auto;
-}
-.arrow{
-    width: 60px;
-    margin-left: 30px;
-    margin-top: 80px;
+    flex-wrap: wrap;
 }
 .mid-block section{
     width: 1000px;
-    margin: auto;
+    margin: 70px;
     font-family: Arial, Helvetica, sans-serif;
     color:white;
 }
-.mid-block section p{
-    width: 800px
+.banner-middle{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: auto;
+}
+.banner-middle h1{
+    color: white;
+    font-size: 50px;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-bottom: 0px;
+}
+.banner-middle span{
+    font-size: 20px;
+}
+.banner-middle div{
+    background-color:cornflowerblue;
+    opacity: 90%;
+    align-self: center;
+    border-radius: 3px;
 }
 .mid-block div img{
     height: 20%;
@@ -73,27 +101,50 @@
     margin-right: auto;
     display: block;
 }
-.bottom-block{
+/* .bottom-block{
     width: 1200px;
-    height: 200px;
     margin: auto;
     display: flex;
     flex-wrap: wrap;
+} */
+
+.banner-bottom{
+    margin: auto;
+    width: 1200px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
-.bottom-block div{
-    width: 300px;
-    height: 150px;
-    margin-top: 50px;
+.link{
+    width: 260px;
+    margin: 20px;
+    display: flex;
+    flex-flow: wrap column;
 }
-.bottom-block a{
+.link a{
     text-decoration: none;
     color: white;
     font-size: 18px;
+    background-color: cornflowerblue;
+    opacity: 90%;
 }
-.bottom-block div span{
+.link a:hover{
+    color: #aaf;
+}
+.banner-link1{
+    align-self: flex-end;
+}
+.banner-link2{
+    align-self: center;
+}
+.banner-link3{
+    align-self: flex-start;
+}
+
+/* .bottom-block div span{
     color: whitesmoke; 
     font-weight: bold;
-}
+} */
 .wrap{
     margin: auto;
     width: 1200px;
