@@ -10,6 +10,10 @@ body{
     left: 0;
     background-color: #fff;
     border-bottom: 5px solid darkgray;
+    z-index: 1;
+}
+.header img{
+    vertical-align: bottom;
 }
 .logo{
     margin: 20px;
@@ -18,13 +22,15 @@ body{
 }
 .social-media{
     align-self: center;
-    margin: 31px;
+    margin: 33px;
     position: absolute;
     right: 0;
 }
 .social-media a{
-    margin: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
 }
+
 .first-banner{
     width: 100%;
     height: 400px;
@@ -61,14 +67,18 @@ body{
     margin-top: 70px;
 }
 .selection-items{
+    width: 180px;
     font-size: 18px;
     padding: 5px 50px;
     border: 1px dotted;
+    box-sizing: border-box;
     position: relative;
     overflow: hidden;
 }
 .selection-items span{
     position: relative;
+    left: 0;
+    right: 0;
     transition: 0.4s;
 }
 .selection-items:hover span{
