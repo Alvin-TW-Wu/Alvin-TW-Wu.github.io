@@ -1,0 +1,115 @@
+img{
+    vertical-align: bottom;
+}
+.advg{
+    width: 900px;
+    margin: auto;
+    padding: 40px 0;
+}
+.advg:nth-child(even) .title{
+    margin-left: auto;
+}
+.title{
+    width: 300px;
+    position: relative;
+    z-index: 3;
+}
+.heading{
+    color: #fff;
+    font: 40px Arial;
+    background-color: red;
+    display: flex;
+}
+.heading span{
+    font-size: 102px;
+    transform: rotate(90deg);
+    font-weight: lighter;
+}
+.heading h2{
+    text-align: center;
+    padding-top: 40px;
+}
+.title-text{
+    font: 30px Arial;
+    background-color: #000;
+    color: white;
+    padding: 25px 15px;
+    position: absolute;
+}
+.advg:nth-child(even) .video{
+    margin-left: 0;
+}
+.advg:nth-child(even) .video .yt{
+    margin-left: -710px;
+}
+.advg:nth-child(even) .video::before{
+    right: 200px;
+}
+.video::before{
+    content: '';
+    width: 300px;
+    height: 200px;
+    background-color: rgb(231, 227, 227);
+    position: absolute;
+    right: -40px;
+    top: -60px;
+    z-index: 1;
+}
+.video{
+    margin-left: 200px;
+    position: relative;
+}
+.video a{
+    display: flex;
+    align-items: center;
+    z-index: 2;
+    position: relative;
+}
+.yt{
+    margin-left: -60px;
+}
+.advg:nth-child(even) .description{
+    margin-left: 200px;
+    margin-top: -20px;
+}
+.description{
+    width: 700px;
+    background-color: #ccc;
+    margin-left: 40px;
+    margin-top: -10px;
+    z-index: 2;
+    position: relative;
+    box-sizing: border-box;
+    padding: 15px;
+}
+.description span{
+    color: red;
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    padding-bottom: 10px;
+}
+.description span::after{
+    content: '';
+    display: inline-block;
+    width: 0;
+    border-bottom: 2px solid #f00;
+    flex-grow: 1;
+    margin: 0 0.5em;
+}
+.description h3{
+    font-size: 20px;
+    color: white;
+    background-color: #000;
+    display: inline;
+    padding: 4px;
+}
+.description p{
+    font-size: 20px;
+    padding: 4px;
+    text-indent: 1em;
+}
+.description p::before{
+    content: '';
+}

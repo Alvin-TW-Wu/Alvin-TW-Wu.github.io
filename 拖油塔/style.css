@@ -1,6 +1,10 @@
 body{
     padding-top: 90px;
 }
+img{
+    display: inline-block;
+    vertical-align: bottom;
+}
 .header{          
     width: 100%;  
     height: 90px;
@@ -10,7 +14,7 @@ body{
     left: 0;
     background-color: #fff;
     border-bottom: 5px solid darkgray;
-    z-index: 1;
+    z-index: 4;
 }
 .header img{
     vertical-align: bottom;
@@ -112,26 +116,38 @@ body{
 .first-advantage{
     width: 960px;
     height: 750px;
+    
     position: relative;
 }
-.first-advantage div:nth-child(1){
+.grey-block-odd{
     position: relative;
-    left: 560px;
+    left: 660px;
     top: 50px;
     display: inline-block;
 }
-.first-advantage div:nth-child(2){
+.main-img-odd{
     position: absolute;
     top: 150px;
     right: 80px;
-    /* display: inline-block; */
+}
+.main-img-odd img{
+    display: inline-block;
+    vertical-align: bottom;
 }
 .youtube-first{
     position: absolute;
     top: 180px;
     right: -10px;
 }
-.first-advantage div:nth-child(3){
+.item-title{
+    position: absolute;
+    top: 0;
+}
+.item-title span{
+    font-size: 72px;
+    transform: 90deg;
+}
+/* .first-advantage div:nth-child(3){
     position: absolute;
     top: 0;
     /* display: inline-block; */
@@ -147,14 +163,15 @@ body{
     height: 750px;
     position: relative;
 }
-.second-advantage div:nth-child(1){
+.grey-block-even{
     position: absolute;
     right: 100px;
     top: 50px;
 }
-.second-advantage div:nth-child(2){
+.main-img-even{
     position: relative;
     top: 100px;
+    display: inline-block;
 }
 .youtube-second{
     position: absolute;

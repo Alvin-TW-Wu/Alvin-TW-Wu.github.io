@@ -1,0 +1,49 @@
+a{
+    text-decoration: none;
+}
+body{
+    padding-top: 100px;
+}
+.header{
+    width: 100%;
+    height: 100px;
+    padding: 0;
+    position: fixed;
+    top: 0;
+}
+.nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+nav{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+nav a{
+    padding: 10px;
+    font-size: 16px;
+    font: 1em Arial;
+    color: rgb(25, 182, 64);
+}
+.row{
+    /* height: 100px;   */
+    justify-content: space-around;
+}
+.logo a{
+    display: flex; 
+    justify-content: center;
+    align-items: center; 
+}
+.logo img{
+    margin: 10px;    
+}
+.logo h1{
+    text-align: center;
+    font: 1em Arial;
+    font-size: 20px;
+    color: rgb(25, 182, 64);
+    letter-spacing: 2px;
+    font-weight: bold;
+}
