@@ -123,6 +123,7 @@ nav a{
 .services-group{
     justify-content: flex-start;
     padding: 10px;
+    max-width: 1200px;
 }
 .services-items{
     height: 350px;
@@ -223,6 +224,7 @@ nav a{
 }
 .step-pic img{
     vertical-align: bottom;
+    width: 100%;
 }
 .step-index{
     position: relative;
@@ -397,7 +399,10 @@ nav a{
 .footer .row{
     align-items: flex-start;
 }
-.footer-items h4, .footer-items p, .footer-items span, .footer-items a{
+.footer-items h4,
+.footer-items p,
+.footer-items span,
+.footer-items a{
     padding: 5px;
     font: 13px Arial;
     color: green;
@@ -432,13 +437,20 @@ nav a{
     height: 30px;
 }
 .copyright{
-    font-size: 8px;
+    font: 8px Arial;
     margin: 40px 0 15px;
     flex-direction: column;
 }
+.copyright a{
+    color: darkgreen;
+    font: 8px Arial;
+}
 .policy{
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+}
+.policy a{
+    padding: 0 10px;
 }
 
 
@@ -608,9 +620,9 @@ nav a{
 }
 
 @media screen and (min-width: 1024px){
-    .services-group{
+    /* .services-group{
         width: 1200px;
-    }
+    } */
     .steps-of-work .steps:nth-child(odd) .step-index .arrow{
         display: block;
         position: absolute;
