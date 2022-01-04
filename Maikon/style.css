@@ -2,19 +2,18 @@ a{
     text-decoration: none;
 }
 body{
-    padding-top: 100px;
+    padding-top: 150px;
 }
 .header{
     width: 100%;
     height: 100px;
-    padding: 0;
     position: fixed;
     top: 0;
+    background-color: #fff;
+    z-index: 3;
 }
-.nav{
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
+button{
+    cursor: pointer;
 }
 nav{
     display: flex;
@@ -22,22 +21,26 @@ nav{
     align-items: center;
 }
 nav a{
-    padding: 10px;
+    padding: 5px;
     font-size: 16px;
     font: 1em Arial;
     color: rgb(25, 182, 64);
 }
 .row{
-    /* height: 100px;   */
-    justify-content: space-around;
+    justify-content: center;
+    align-items: center;
+}
+.logo{
+    padding: 0;
 }
 .logo a{
-    display: flex; 
-    justify-content: center;
-    align-items: center; 
+    display: block; 
+    /* justify-content: flex-start;
+    align-items: center;  */
 }
 .logo img{
-    margin: 10px;    
+    margin: 20px;
+    vertical-align: bottom;
 }
 .logo h1{
     text-align: center;
@@ -46,4 +49,578 @@ nav a{
     color: rgb(25, 182, 64);
     letter-spacing: 2px;
     font-weight: bold;
+}
+.btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.btn button{
+    padding: 10px 15px;
+    color: #aaa;
+    background-color: #fff;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    transition: 0.5s;
+}
+.btn button:hover{
+    background-color: rgb(25, 182, 64);
+    color: white;
+}
+.banner-txt h3{
+    text-align: left;
+    font: 40px Arial;
+    padding: 20px 0;
+}
+.banner-txt p{
+    font: 16px Arial;
+    padding: 0 20px;
+    line-height: 2em;
+}
+.about{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    margin: 40px 20px;
+}
+.about .learn{
+    color: white;
+    font: 16px Arial;
+    background-color: rgb(25, 182, 64);
+    padding: 20px 30px;
+    margin: 10px;
+    border-radius: 5px;
+    transition: 0.5s;
+}
+.about .learn:hover{
+    background-color: #aaa;
+}
+.about .video{
+    color: rgb(25, 182, 64);
+    font: 16px Arial;
+    /* padding: 20px 30px; */
+}
+.contact{
+    color: #aaa;
+    font: 16px Arial;
+    padding: 20px 30px;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    transition: 0.5s;
+}
+.contact:hover{
+    background-color: rgb(25, 182, 64);
+    color: white;
+    border: 1px solid rgb(25, 182, 64);
+}
+.banner-pic img{
+    width: 100%;
+}
+.services{
+    margin: 30px 0;
+}
+.services-group{
+    justify-content: flex-start;
+    padding: 10px;
+}
+.services-items{
+    height: 350px;
+	box-shadow: 0 0 0px #ccc;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+}
+.container h3{
+    font: 40px Arial;
+    padding: 20px 10px;
+}
+.services-group p{
+    font: 14px Arial;
+    margin: 0;
+    margin-bottom: auto;
+    line-height: 2em;
+    color: rgb(25, 182, 64);
+}
+.services-items img{
+    border-radius: 50%;
+    margin: 20px;
+}
+.services-items h4{
+    font: 30px Arial;
+    margin-bottom: auto;
+}
+.services-items h4, .service-items p{
+    padding: 10px;
+}
+.services-items a{
+    font: 16px Arial;
+    margin: 30px;
+    margin-top: auto;
+    color: rgb(25, 182, 64);
+    display: block;
+}
+.sbsc img{
+    width: 100%;
+    margin: 10px;
+    vertical-align: bottom;
+}
+.banner-blue{
+    color: #fff;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    font: 16px Arial;
+    line-height: 2em;
+    padding: 20px;
+}
+.data-box{
+    background-color: #ffffff40;
+    text-align: center;
+    border-radius: 7px;
+    margin: 20px 20px;
+}
+.data h6{
+    font: 36px Arial;
+    padding: 10px;
+    padding-top: 20px;
+}
+.data p{
+    font: 14px Arial;
+    padding: 10px;
+    padding-bottom: 20px;
+}
+.banner-blue a{
+    border: 1px solid white;
+    padding: 0 10px;
+    font-size: 14px;
+    color: white;
+    margin: 50px 0;
+    margin-right: auto;
+    border-radius: 5px;
+    transition: 0.5s;
+}
+.banner-blue a:hover{
+    background-color: rgb(25, 182, 64);
+    border: 1px solid rgb(25, 182, 64);
+}
+.blue-box{
+    width: 100%;
+    background-color: rgb(73, 73, 255);
+}
+
+.steps{
+    margin: 20px 0;
+}
+.step-txt h4{
+    font: 24px Arial;
+    padding: 10px 0;
+}
+.step-txt p{
+    font: 12px Arial;
+    padding: 10px 0;
+    line-height: 2em;
+}
+.step-pic img{
+    vertical-align: bottom;
+}
+.step-index{
+    position: relative;
+}
+.arrow img{
+    vertical-align: bottom;
+}
+.arrow{
+    display: none;
+}
+
+.project-title{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+.project-title h3{
+    text-align: left;
+    font: 40px Arial;
+    padding: 20px 10px;
+}
+.all-projects{
+    color: white;
+    font: 14px Arial;
+    background-color: rgb(25, 182, 64);
+    padding: 10px 20px;
+    margin: 10px;
+    border-radius: 5px;
+    transition: 0.5s;
+}
+.all-projects:hover{
+    background-color: #aaa;
+}
+.project .row{
+    justify-content: space-around;
+}
+.project-items{
+    position: relative;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 0;
+    transition: 1s;
+    border-radius: 5px;
+}
+.project-items:hover{
+    background-color: rgb(25, 182, 64);
+}
+.project-items:hover img{
+    opacity: 0;
+}
+.prjpic{
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+}
+.project-items img{
+    vertical-align: bottom;
+    width: 100%;
+    /* height: 250px; */
+    border-radius: 5px;
+}
+.project-items p{
+    font: 24px Arial;
+    color: white;
+    position: absolute;
+    padding: 20px;
+    top: 80px;
+    left: 10px;
+    opacity: 0;
+}
+.project-items:hover p{
+    opacity: 1;
+}
+
+.sign-up{
+    margin: 20px;
+}
+.sign-up-pic img{
+    width: 100%;
+}
+.sign-up-info{
+    margin: 10px;
+    padding: 10px;
+}
+.sign-up-info p{
+    font: 30px Arial;
+    padding: 20px;
+}
+.sign-up-info input{
+    display: block;
+    width: 80%;
+    height: 20px;
+    margin: 10px;
+}
+.sign-up-info input[placeholder]{
+    padding: 10px;
+    font-size: 14px;
+}
+.sign-up-info textarea{
+    width: 80%;
+    margin: 10px;
+    font: 14px Arial;
+}
+.sign-up-info textarea[placeholder]{
+    padding: 10px;
+    resize: none;
+}
+.sign-up-info button{
+    margin: 10px;
+    color: white;
+    font: 14px Arial;
+    background-color: rgb(25, 182, 64);
+    border-radius: 5px;
+    padding: 5px 25px;
+    text-decoration: none;
+    border: none;
+    transition: 0.5s;
+}
+.sign-up-info button:hover{
+    background-color: #aaa;
+}
+
+.sbscrp-box{
+    background-color: rgba(226, 226, 226, 0.1);
+}
+.subscription{
+    width: 100%;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    background-image: url(./img/subscription.svg);
+    background-position: 0 15%;
+    background-repeat: no-repeat;
+}
+.subscription h3{
+    font: 30px Arial;
+    text-align: center;
+    padding: 20px;
+}
+.subscription .sub-email input[placeholder]{
+    padding: 5px;
+}
+.subscription .sub-email input{
+    width: 300px;
+    height: 30px;
+    border: none;
+    box-shadow: 1px 1px 20px rgb(223, 223, 223);
+}
+.subscription .sub-email button{
+    box-shadow: 1px 1px 20px rgb(170, 170, 170);
+    color: white;
+    font: 14px Arial;
+    background-color: rgb(25, 182, 64);
+    border-radius: 5px;
+    padding: 12px 25px;
+    box-sizing: border-box;
+    text-decoration: none;
+    border: none;
+    transition: 0.5s;
+}
+.subscription .sub-email button:hover{
+    background-color: #aaa;
+}
+
+.footer-items{
+    display: block;
+}
+.footer .row{
+    align-items: flex-start;
+}
+.footer-items h4, .footer-items p, .footer-items span, .footer-items a{
+    padding: 5px;
+    font: 13px Arial;
+    color: green;
+}
+.footer-items a:hover{
+    color: lightgreen;
+}
+.footer-items h3{
+    font: 22px Arial;
+    padding: 20px 0;
+}
+.footer-items .logo img{
+    margin: 10px 0;
+}
+.footer-items address a{
+    display: block;
+    padding: 5px;
+    color: black;
+}
+.footer-items a span{
+    color: rgb(25, 182, 64);
+}
+.social{
+    display: flex;
+    justify-content: flex-start;
+}
+.social div{
+    margin: 10px;
+}
+.social img{
+    width: 30px;
+    height: 30px;
+}
+.copyright{
+    font-size: 8px;
+    margin: 40px 0 15px;
+    flex-direction: column;
+}
+.policy{
+    display: flex;
+    justify-content: center;
+}
+
+
+
+
+#menu-control{
+    position: fixed;
+    top: -20px;
+}
+.hb{
+    display: none;
+}
+
+
+@media screen and (max-width: 767px){
+    .btn button{
+        display: none;
+    }
+    .nav{
+        position: fixed;
+        width: 300px;
+        height: calc(100% - 100px);
+        background-color: lightgreen;
+        top: 100px;
+        /* display: none;
+        可以做 display: none ，下面換成 block，但要做點動畫就用 transition
+        left: 0; */
+        right: -100%;
+        opacity: 0;
+        transition: 1s;
+        display: flex;
+        align-items: stretch;
+    }
+    #menu-control:checked ~ .header .nav{
+        /* display: block; */
+        opacity: 1;
+        right: 0;
+    }
+    nav{
+        display: block;
+        /* display: flex;
+        flex-direction: column; */
+    }
+    .nav a{
+        display: block;
+        text-align: center;
+    }
+    nav a + a{
+        border-top: 1px solid #f00;
+    }
+    .hb{
+        --bar-color: #fff; /*這裡用變數，統一處理顏色*/
+        width: 40px;
+        height: 40px;
+        background-color: lightgreen;
+        display: flex;
+        position: relative;
+        margin-left: auto;
+    }
+    .hb span{
+        position: absolute;
+        width: 80%;
+        height: 1px;
+        background-color: var(--bar-color);
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        margin: auto;
+        /*這裡設了上下左右 0, margin auto，讓margin自動分配到上下左右*/
+        display: none;
+    }
+    .hb span:first-child{
+        margin-top: 5px;
+        display: none;
+    }
+    .hb span:last-child{
+        margin-bottom: 5px;
+        display: none;
+    }
+    #menu-control:checked ~ .header .hb span:first-child{
+        margin-top: auto;
+        transform: rotate(45deg);
+        display: block;
+    }
+    #menu-control:checked ~ .header .hb span:nth-child(2){
+        display: none;
+    }
+    #menu-control:checked ~ .header .hb span:last-child{
+        margin: auto;
+        transform: rotate(-45deg);
+        display: block;
+    }
+    .hb::after{
+        content: '';
+        width: 80%;
+        height: 4px;
+        /* background-color: #f00; */
+        background-color: var(--bar-color);
+        margin: auto;
+        /* box-shadow: 0px 10px 5px #00f,
+                    0px -10px 2px #0f0; */
+        box-shadow: 0px 10px 0px var(--bar-color),
+                    0px -10px 0px var(--bar-color); 
+    }
+    #menu-control{
+        position: absolute;
+        /* z-index: -1; */
+        top: -20px;
+    }
+    #menu-control:checked ~ .header .hb:after{
+        /* background-color: #00f;
+        box-shadow: 0px 10px 5px #00f,
+                    0px -10px 2px #00f;*/                
+        --bar-color: blue;
+        display: none;
+    } 
+}
+
+
+@media screen and (min-width: 768px){
+    .services-items{
+        height: 500px;
+    }
+    .step-order{
+        display: flex;
+    }
+    .steps{
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .step-index{
+        padding: 10px;
+        /* box-sizing: border-box; */
+        display: flex;
+        justify-content: center;
+        align-items: center;    
+    }
+    .step-txt{
+        padding: 30px;
+        position: relative;
+    }
+    .step-txt h4{
+        position: absolute;
+        top: 80px;
+    }
+    .step-txt p{
+        position: absolute;
+        top: 150px;
+    }
+    .steps:nth-child(odd) .step-pic{
+        order: 1;
+    }
+    .steps:nth-child(odd) .step-index{
+        order: 2;
+    }
+    .steps:nth-child(odd) .step-txt{
+        order: 3;
+    }
+    .copyright{
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .policy{
+        justify-content: flex-end;
+    }
+}
+
+@media screen and (min-width: 1024px){
+    .services-group{
+        width: 1200px;
+    }
+    .steps-of-work .steps:nth-child(odd) .step-index .arrow{
+        display: block;
+        position: absolute;
+        top: 70%;
+        right: 50%;
+    }
+    .steps-of-work .steps:nth-child(even) .step-index .arrow{
+        display: block;
+        position: absolute;
+        top: 70%;
+        left: 50%;
+    }
 }
