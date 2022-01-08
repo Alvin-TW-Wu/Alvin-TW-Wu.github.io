@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <title>Document</title>
+        
+        <style>
+            .header{
+                height: 150px;
+            }
+            h1{
+                font: 72px Verdana;
+                color: yellow;
+                letter-spacing: 0.5em;
+                text-shadow: 1px 1px 3px white;
+            }
+            .buttons{
+                width: 700px;
+                height: 50px;
+                display: flex;
+                margin-left: auto;
+                margin-right: auto;
+                justify-content: center;
+                align-items: center;
+            }
+            .buttons button{
+                margin: 10px;
+                font-weight: bold;
+            }
+            .btn-danger:hover{
+                background-color: rgb(107, 9, 9);
+                border: rgb(107, 9, 9);
+            }
+            .pretag{
+                width: 80%;
+                margin: auto;;
+            }
+            #code{
+                padding-top: 30px;
+            }
+        </style>
+    </head>
+    <body>
+
+        <div class="header d-flex justify-content-center w-100 bg-success">
+            <h1 class="m-auto text-center">POKEMON</h1>
+        </div>
+
+        <div class="buttons">
+            <button onclick="Fetch()" class="btn btn-danger">Fetch Them</button>
+            <button onclick="Reset()" class="btn btn-danger">Clear Out</button>
+            <button onclick="Add()" class="btn btn-danger">Add 1</button>
+            <button onclick="Remove()" class="btn btn-danger">Remove 1</button>
+            <button onclick="ShowCode()" class="btn btn-danger">Show Code</button>
+        </div>
+        
+        <div id="collection"></div>
+        <div class="pretag"><pre id="code"></pre></div>
+
+        <script>
+            let collection = document.getElementById("collection");
+            let code = document.getElementById("code");
+            let fileName;
+            let index = 1;
+
+            function Fetch(){
+                code.innerHTML = "";
+                for(let i = 1; i <= 898; i++){
+                    collection = document.getElementById("collection");
+                    fileName = i.toString().padStart(3, "0");
+                    let source = `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${fileName}.png`;
+                    
+                    let image = document.createElement("img");
+                    image.setAttribute("src", source);
+                    collection.appendChild(image);          
+                    collection.setAttribute("class", "bg-warning d-flex justify-content-evenly flex-wrap");
+                }
+            }
+
+            function Reset(){
+                collection.innerHTML = "";
+                code.innerHTML = "";
+            }
+                
+            function Add(){
+                code.innerHTML = "";
+                fileName = index.toString().padStart(3, "0");
+                let source = `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${fileName}.png`;
+                let image = document.createElement("img");
+                image.setAttribute("src", source)
+                collection.appendChild(image);
+                index++;
+            }
+
+            function Remove(){
+                if(collection.lastChild != null){
+                    collection.removeChild(collection.lastChild);
+                    index--;
+                }
+            }
+
+            function ShowCode(){
+                collection.innerHTML = "";
+                $("#code").load("inline_onclick.js");
+                index = 1;
+            }
+        </script>
+        
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+        
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    </body>
+</html>
