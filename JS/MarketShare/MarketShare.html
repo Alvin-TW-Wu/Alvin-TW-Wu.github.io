@@ -11,7 +11,7 @@
 
 <body>
 
-    <canvas id="mkShare"></canvas>
+    <canvas id="mkShare" class="my-5"></canvas>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.js"
         integrity="sha512-G8JE1Xbr0egZE5gNGyUm1fF764iHVfRXshIoUWCTPAbKkkItp/6qal5YAHXrxEu4HNfPTQs6HOu3D5vCGS1j3w=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -42,7 +42,6 @@
         
             createTable(marketShare.titles, marketShare.data);
             
-            
             marketShare.data.forEach(item => {
                 companies.push(item.Company);
                 data.push(item.Ratio);
@@ -55,7 +54,7 @@
         function createTable(headers, data){
             let table = document.createElement('table');
             let tBody = document.createElement('tbody');
-            table.setAttribute('class', 'table table-bordered table-danger table-hover table-striped text-center mt-5');
+            table.setAttribute('class', 'table table-bordered table-warning table-hover table-striped text-center w-75 m-auto mt-5 text-success');
 
             table.appendChild(createHeaders(headers));
             
@@ -82,6 +81,7 @@
             });
             let tHead = document.createElement('thead');
             tHead.appendChild(tr)
+            tHead.classList.add('table-danger');
             return tHead;
         }
 
