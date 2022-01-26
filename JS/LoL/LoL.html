@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <title>Document</title>
+    <style>
+        .container-fluid{
+            height: 100px;
+        }
+        .card-text{
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 5;
+            /*省略第n行後的文字*/
+            -webkit-box-orient: vertical;
+            /*設定元素是垂直布局*/
+        }
+        .modal-body>img{
+            width: 100%;
+        }
+    </style>
+  </head>
+  <body>
+        <div class="container-fluid bg-success">
+            <div class="jumbotron"><h1 class="fs-1 text-white text-center">英雄聯盟 - 角色卡</h1></div>
+            <div class="row flex-wrap">
+
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="" alt="">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <template id="lol">
+            <div class="card col-12 col-md-6 col-lg-3">
+                <img src="" class="card-img-top" alt="">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Go somewhere</a>
+                </div>
+            </div>
+        </template>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+    <script>
+        const urlLoL = 'https://ddragon.leagueoflegends.com/cdn/10.22.1/data/zh_TW/champion.json'
+
+        let template = document.getElementById('lol')
+        const cardRow = document.querySelector('.row')
+
+        let champKeys, champValues
+        let newChampData = []
+
+        window.onload = function(){
+            fetch(urlLoL)
+                .then(response => response.json())
+                .then(result => {
+                    champKeys = Object.keys(result.data)
+                    champValues = Object.values(result.data)
+
+                    for(let i = 0; i < champKeys.length; i++){                        
+                        newChampData.push({
+                            ID: champKeys[i], 
+                            Name: champValues[i].name,
+                            Title: champValues[i].title,
+                            Blurb: champValues[i].blurb,
+                            Status: {
+                                "HP": champValues[i].stats.hp,
+                                "MP": champValues[i].stats.mp,
+                                "Armor": champValues[i].stats.armor,
+                                "Attack Damage": champValues[i].stats.attackdamage,
+                                "Attack Speed": champValues[i].stats.attackspeed
+                            }
+                        })
+                    }
+                    populateCard(newChampData)
+                })
+                .catch(ex => {
+                    console.log(ex)
+                })
+        }
+
+        function populateCard(data){
+            data.forEach(item => {
+                let cardClone = template.content.cloneNode(true)
+                cardClone.querySelector('img').src = `https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${item.ID}_0.jpg`
+                cardClone.querySelector('h5').innerText = `${item.ID} ${item.Name}`
+                cardClone.querySelector('p').innerText = item.Blurb
+                
+                cardClone.querySelector('.btn').addEventListener('click', function(){
+                    let modal = document.querySelector('#exampleModal')
+                    modal.querySelector('img').src = `https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${item.ID}_0.jpg`
+                    modal.querySelector('h5').innerText = `${item.ID} ${item.Name}`
+                    // modal.querySelector('p').innerText = item.Blurb
+                    
+                    let statusKeys = Object.keys(item.Status)
+                    let statusValues = Object.values(item.Status)
+                    for(let i = 0; i < 5; i++){
+                        let p = document.createElement('p')
+                        p.innerText = `${statusKeys[i]} = ${statusValues[i]}`
+                        modal.querySelector('.modal-body').append(p)
+                    }
+                    
+                    
+                    // p.innerText = `MP = ${item.Status.mp}`
+                    // modal.querySelector('.modal-body').append(p)
+                    // p.innerText = `Armor = ${item.Status.armor}`
+                    // modal.querySelector('.modal-body').append(p)
+                    // p.innerText = `Attack Damage = ${item.Status.attackdamage}`
+                    // modal.querySelector('.modal-body').append(p)
+                    // p.innerText = `Attack Speed = ${item.Status.attackspeed}`
+                    // modal.querySelector('.modal-body').append(p)
+                    
+                })
+
+                cardRow.append(cardClone)
+            })
+        }
+
+    </script>
+  </body>
+</html>
