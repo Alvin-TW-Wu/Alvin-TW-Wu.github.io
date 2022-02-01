@@ -8,15 +8,16 @@
     <style>
         body{
             position: relative;
+            background-color: rgb(29, 29, 29);
         }
         .btn-group.border{
             display: flex;
             justify-content: center;
         }
         #progress{
-            overflow: scroll;
-            /* width: 300px; */
+            overflow-y: auto;
             height: 300px;
+            background-color: #faf;
         }
         .input{
             /* margin: 30px; */
@@ -24,15 +25,17 @@
     </style>
   </head>
   <body>
-    <div class="btn-group my-3 border" role="group" aria-label="Basic mixed styles example">
-        <button id="start" type="button" class="btn btn-danger">Start</button>
-        <button id="done" type="button" class="btn btn-warning">I'm Done</button>
-        <button id="answer" type="button" class="btn btn-success">GIVE ME ANSWER</button>
+    <div class="w-75 m-auto">
+        <div class="btn-group my-3 border" role="group" aria-label="Basic mixed styles example">
+            <button id="start" type="button" class="btn btn-danger col-4">Start</button>
+            <button id="done" type="button" class="btn btn-warning col-4">I'm Done</button>
+            <button id="answer" type="button" class="btn btn-success col-4">GIVE ME ANSWER</button>
+        </div>        
     </div>
-    <div class="my-3 w-25 m-auto">
-        <span>猜猜看</span>
+    <div class="my-5 w-50 mx-auto d-flex justify-content-between">
+        <span class="fs-2 text-info">猜猜看</span>
         <input type="text" id="guess">
-        <button id="submit" class="btn btn-light">按我輸入</button>
+        <button id="submit" class="btn btn-secondary">按我輸入</button>
     </div>
     <div id="progress" class="border border-2 border-dark w-25 m-auto">
         <span class="badge bg-secondary rounded-pill"></span>
@@ -57,6 +60,7 @@
         const doneBtn = document.querySelector('#done')
         const answerBtn = document.querySelector('#answer')
         const submitBtn = document.querySelector('#submit')
+        const input = document.querySelector('#guess')
 
         startBtn.addEventListener('click', function(){
             answer = getAnswer()
@@ -78,6 +82,19 @@
                     let checkRepeat = new Set(inputAnswer.split(''))
                     if(checkRepeat.size == 4){
                         assessment(inputAnswer)
+                    }
+                }
+            }
+        })
+        input.addEventListener('keypress', function(e){
+            if(e.key === 'Enter'){
+                inputAnswer = document.querySelector('input').value
+                if(inputAnswer.length == 4 && inputAnswer != null && inputAnswer != 'undefined'){
+                    if(!isNaN(inputAnswer) && inputAnswer % 1 == 0){
+                        let checkRepeat = new Set(inputAnswer.split(''))
+                        if(checkRepeat.size == 4){
+                            assessment(inputAnswer)
+                        }
                     }
                 }
             }

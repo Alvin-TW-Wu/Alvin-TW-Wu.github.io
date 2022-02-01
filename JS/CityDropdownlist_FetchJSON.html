@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>台灣城市 & 地區 動態下拉選單</h1>
+
+    <select name="City" id="cities"></select>
+
+    <select name="District" id="districts"></select>
+
+    <input type="submit" value="Submit">
+
+    <div class="msg"></div>
+
+    
+    <script>
+        let url = 'https://raw.githubusercontent.com/Alvin-TW-Wu/FileStorage/main/TaiwanAddress_Simple.json'
+        
+        const cityOptionList = document.querySelector('#cities')
+        const distOptionList = document.querySelector('#districts')
+        const submit = document.querySelector('input')
+
+        const newData = fetch(url)
+                            .then(response => response.json())
+                            .then(result => {
+                                let newArray = []
+                                let distNames = []
+                                result.forEach(data => {
+                                    data.AreaList.forEach(x => {
+                                        distNames.push(x.AreaName)
+                                    })
+                                    newArray.push({
+                                        'City': data.CityName,
+                                        'District': distNames
+                                    })
+                                    distNames = []
+                                })
+                                return newArray
+                            })
+                            .catch(ex => {
+                                console.log(ex)
+                            })
+
+
+        window.onload = function(){
+            cityDropdown()
+            distDropdown()
+        }
+
+        cityOptionList.onchange = function(){
+            distOptionList.length = 1
+            // console.log(cityOptionList.selectedOptions[0])
+            let optionSelect = cityOptionList.selectedOptions[0].text
+            newData.then(result => {
+                let distArray = result.find(x => x.City == optionSelect).District
+                // console.log(distArray)
+                distArray.forEach(district => {
+                    let opt = document.createElement('option')
+                    opt.innerText = district
+                    distOptionList.append(opt)
+                })
+            })
+        }
+
+        submit.addEventListener('click', function(){
+            let formData = new FormData()
+            formData.append('city', cityOptionList.selectedOptions[0].text)
+            formData.append('district', distOptionList.selectedOptions[0].text)
+
+            let request = new XMLHttpRequest()
+            request.open('POST', 'https://.....')
+            request.send(formData)
+        })
+
+        function cityDropdown(){
+            let initOption = document.createElement('option')
+            initOption.text = '-----選擇城市-----'
+            cityOptionList.add(initOption, null)
+
+            newData.then(result => {
+                result.forEach(city => {
+                    let option = document.createElement('option')
+                    option.text = city.City
+                    cityOptionList.append(option)
+                })
+            })
+        }
+
+        function distDropdown(){
+            let initOption = document.createElement('option')
+            initOption.text = '-----選擇區域-----'
+            distOptionList.add(initOption, null)
+        }
+
+
+    </script>
+</body>
+</html>
