@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <title>Calendar</title>
+    <style>
+        body{
+            background: linear-gradient(to left bottom, #fff, #164733);
+            background-repeat: no-repeat;
+            height: 100vh;
+        }
+        .cntnr{
+            border-radius: 20px;
+            width: 800px;
+        }
+        h1{
+            margin-bottom: 0;
+            font-size: 58px;
+            font-weight: 700;
+            background: linear-gradient(to right, #ffc895, #ff3916);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .title{
+            height: 100px;
+        }
+        .current-ym{
+            height: 50px;
+            background-color: rgb(129, 157, 250);
+        }
+        .current-ym span{
+            cursor: pointer;
+        }
+        #ym{
+            width: 300px;
+        }
+        /* .current-ym::before{
+            content: '';
+            border: solid red;
+            border-width: 0 0 5px 5px;
+            display: inline-block;
+        } */
+        td{
+            width: calc(800px / 7);
+            font-weight: 700;
+            text-align: center;
+        }
+        tbody td{
+            border: 1px solid #fff;
+            height: 90px;
+            user-select: none;
+        }
+        .schedule-bg{
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            transition: 1s;
+            opacity: 0;
+        }
+        .schedule-bg-toggle{
+            left: 0;
+            transition: 0.1s ease-in;
+            opacity: 1;
+        }
+        .schedule{
+            width: 300px;
+            height: 500px;
+            position: fixed;
+            top: 100px;
+            right: -300px;
+            border: 1px solid #fff;
+            border-radius: 20px;
+            overflow: hidden;
+            background-color: #fff;
+            opacity: 0;
+        }
+        .schedule-toggle{
+            right: 0;
+            transition: 0.8s ease-out;
+            opacity: 1;
+        }
+    </style>
+  </head>
+  <body>
+        <div class="cntnr mt-5 m-auto overflow-hidden">
+            <div class="title w-100 bg-danger d-flex justify-content-center">
+                <h1 class="text-center align-self-center">My Calendar</h1>
+            </div>
+            <div class="current-ym text-center text-white fs-3 d-flex justify-content-center">
+                <span id="previous" class="align-self-center mx-3 fs-1 user-select-none"><</span>
+                <p id="ym" class="m-0 align-self-center"></p>
+                <span id="next" class="align-self-center mx-3 fs-1 user-select-none">></span>
+            </div>
+            <table class="table bg-transparent border">
+                <thead class="text-white text-center">
+                    <tr>
+                        <td>Sun</td>
+                        <td>Mon</td>
+                        <td>Tue</td>
+                        <td>Wed</td>
+                        <td>Thu</td>
+                        <td>Fri</td>
+                        <td>Sat</td>
+                    </tr>
+                </thead>
+                <tbody class="text-white text-center">
+                </tbody>
+            </table>
+        </div>
+
+        
+        <div id="schedule-bg" class="schedule-bg">
+            <div class="schedule">
+                <p class="text-center p-3 fs-2 bg-secondary text-white user-select-none"></p>
+                <div id="inputArea">
+                    <ul>
+                        <li>
+                            <input type="text" class="w-100 border-0 border-bottom border-primary">
+                        </li>
+                    </ul>
+                </div>
+                <dive class="position-absolute bottom-0 my-5 mx-2">
+                    <button id="save" class="btn btn-secondary">Save</button>
+                    <button id="delete" class="btn btn-secondary">Delete</button>
+                </dive>
+            </div>
+        </div>
+
+
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+    <script>
+        
+        window.onload = function(){
+            init()
+            activateTdBtn()
+            inputBtn()
+
+            previousMonth.onclick = function(){
+                month--
+                if(month < 0){
+                    month = 11
+                    year--
+                }
+                today.setMonth(month)
+                init()
+                activateTdBtn()
+            }
+            nextMonth.onclick = function(){
+                month++
+                if(month > 11){
+                    month = 0
+                    year++
+                }
+                today.setMonth(month)
+                init()
+                activateTdBtn()
+            }
+            saveBtn.addEventListener('click', function(){
+                let inputArea = document.querySelector('#inputArea')
+                let data = {
+                    HTML: inputArea.innerHTML,
+                    value: inputArea.querySelector('input').value
+                }
+                localStorage.setItem(scheduleTitle.innerText, JSON.stringify(data))
+                init()
+                activateTdBtn()
+            })
+            deleteBtn.addEventListener('click', function(){
+                localStorage.removeItem(scheduleTitle.innerText)
+                init()
+                document.querySelector('.schedule').classList.remove('schedule-toggle')
+                document.querySelector('#schedule-bg').classList.remove('schedule-bg-toggle')
+                activateTdBtn()
+            })            
+        }
+    
+        const today = new Date()
+        let year = today.getFullYear()
+        let month = today.getMonth()
+        
+        const tbody = document.querySelector('tbody')
+        const currentYM = document.querySelector('#ym')
+        const previousMonth = document.getElementById('previous')
+        const nextMonth = document.getElementById('next')
+        const scheduleTitle = document.querySelector('.schedule>p')
+        const saveBtn = document.querySelector('#save')
+        const deleteBtn = document.querySelector('#delete')
+        let input = document.querySelector('.schedule-bg input')
+        
+        function init(){
+            tbody.innerHTML = ''
+            currentYM.innerText = `${year} - ${new Intl.DateTimeFormat('en-US', {month: 'long'}).format(today)}`        
+            
+            let firstDay = new Date(year, month, 1).getDay()
+            let daysOfMonth = new Date(year, month + 1, 0).getDate()
+
+            let day = 1
+            let rows = Math.ceil((firstDay + daysOfMonth) / 7)
+            for(row = 1; row <= rows; row++){
+                let tr = document.createElement('tr')
+                for(let col = 0; col < 7; col++){
+                    let td = document.createElement('td')
+                    if(col < firstDay && row == 1){
+                        //上個月剩下的日子
+                    }
+                    else{
+                        if(day <= daysOfMonth){
+                            td.innerText = day
+
+                            if(localStorage.getItem(`${year}-${new Intl.DateTimeFormat('en-US', {month: 'short'}).format(today)}-${day}`) != null){
+                                td.classList.add('text-warning', 'fs-2')
+                            }
+                        }
+                        else{
+                            //下個月的日期
+                        }                        
+                        day++
+                    } 
+                    tr.appendChild(td)
+                }
+                tbody.append(tr)
+            }
+        }
+
+        function activateTdBtn(){
+            document.querySelectorAll('tbody td').forEach(td => {
+                td.addEventListener('click', function(){
+                    if(td.innerText != ''){
+                        document.querySelector('.schedule').classList.add('schedule-toggle')
+                        document.getElementById('schedule-bg').classList.add('schedule-bg-toggle')
+                        scheduleTitle.innerText = `${year}-${new Intl.DateTimeFormat('en-US', {month: 'short'}).format(today)}-${td.innerText}`
+
+                        //putting existing items in localStorage in
+                        if(localStorage.getItem(scheduleTitle.innerText) != null){
+                            let inputArea = document.querySelector('#inputArea')
+                            inputArea.innerHTML = JSON.parse(localStorage.getItem(scheduleTitle.innerText)).HTML
+                            inputArea.querySelector('input').value = JSON.parse(localStorage.getItem(scheduleTitle.innerText)).value
+                        }
+                        else{
+                            let li = document.createElement('li')
+                            let inputClone = document.createElement('input')
+                            let attrib = document.querySelector('.schedule-bg input').getAttribute('class')
+                            inputClone.setAttribute('class', attrib)
+                            li.append(inputClone)
+                            document.querySelector('#schedule-bg ul').replaceChild(li, inputArea.querySelector('li'))
+                        }
+                    }
+                })
+                dismissSideBar()
+            })
+        }
+
+        function dismissSideBar(){
+            document.getElementById('schedule-bg').onclick = function(){
+                document.querySelector('.schedule').classList.remove('schedule-toggle')
+                document.querySelector('#schedule-bg').classList.remove('schedule-bg-toggle')
+            }
+            document.querySelector('.schedule').onclick = function(){
+                event.stopPropagation()
+            }
+        }
+        
+        function inputBtn(){
+            input.addEventListener('keydown', function(e){
+                    let li = document.createElement('li')
+                    let inputClone = document.createElement('input')
+                if(e.keyCode === 13 ){                
+                    let attrib = document.querySelector('.schedule-bg input').getAttribute('class')
+                    inputClone.setAttribute('class', attrib)
+                    li.append(inputClone)
+                    document.querySelector('#schedule-bg ul').append(li)
+                    inputClone.focus()
+                }
+                // else if(e.keyCode === 8){
+                //     let ul = document.querySelector('.schedule-bg ul')
+                //     if(ul.childNodes.length > 2){
+                //         ul.removeChild(ul.lastChild)
+                //     }
+                // }
+                else if(e.keyCode != 13) return
+                    input = li.querySelector('input')
+                inputBtn()
+            })
+        }
+    
+    </script>
+
+  </body>
+</html>
