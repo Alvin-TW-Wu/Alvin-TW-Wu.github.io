@@ -1,0 +1,125 @@
+a{
+    text-decoration: none;
+}
+.header a{
+    color: #fff;
+}
+.header-navbar-background {
+    background-image: url(https://deo.shopeemobile.com/shopee/shopee-pcmall-live-sg/assets/cab134ca96b0829b591cfaff892ae62c.png);
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    overflow: hidden;
+    text-indent: -9999px;
+    text-align: left;
+    margin-right: 10px;
+}
+.navbar-fb-png {
+    background-size: 487.5% 293.75%;
+    background-position: 8.064516129032258% 16.129032258064516%;
+}
+.navbar-ig-png {
+    background-size: 487.5% 293.75%;
+    background-position: 58.064516129032256% 16.129032258064516%;
+}
+.navbar-line-png {
+    background-size: 487.5% 313.3333333333333%;
+    background-position: 8.064516129032258% 96.875%;
+}
+.header {
+    width: 100%;
+    background: linear-gradient(-180deg, #f53d2d, #f63);
+}
+.nav-login {
+    width: 400px;
+}
+.header-with-search__shopee-logo.icon-shopee-logo {
+    display: block;
+    width: 162px;
+    height: 50px;
+}
+.download{
+    width: 400px;
+}
+.suggestions span{
+    margin: 0 10px;
+    font-size: 14px;
+}
+
+svg:not(:root) {
+    overflow: hidden;
+}
+.icon-shopee-logo {
+    width: 11.875rem;
+    height: 4rem;
+    fill: #fff;
+}
+.shopee-svg-icon {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    fill: currentColor;
+    position: relative;
+}
+svg:not(:root) {
+    overflow: hidden;
+}
+
+.search-btn {
+    width: 80px;
+    background: linear-gradient(-180deg, #f53d2d, #f63);
+}
+.search input:focus-visible{
+    outline: none;
+}
+
+.carousel-banner{
+    width: 1200px;
+    margin: 0 auto;
+}
+.carousel{
+    height: 100%;
+}
+
+.quick-links{
+    width: 1200px;
+    margin: 5px auto;
+}
+.quick-links span{
+    font-size: 10px;
+}
+.quick-links .btn{
+    width: 110px;
+}
+.quick-links .btn:hover{
+    transform: translateY(-0.0625rem);
+}
+
+.quick-banner{
+    width: 1200px;
+}
+
+.select{
+    width: 1200px;
+    margin: 5px auto;
+}
+.select-content{
+    width: 1200px;
+    background-image: url(https://cf.shopee.tw/file/179a4584ae9a3135fa28379b80ee7d3a);
+}
+.select-brand-logo{
+    width: 80px;
+    height:35%;
+    bottom: 12%;
+    right: 13%;
+}
+
+.categories{
+    width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.cat-item{
+    width: 120px;
+    box-sizing: border-box;
+}
